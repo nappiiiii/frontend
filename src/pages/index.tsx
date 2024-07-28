@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import cafeBackgroundImage from "../assets/images/bg-cafe-1.jpg";
 import ajPanwitImage from "../assets/images/aj-panwit.jpg";
 import coffeeImage from "../assets/images/coffee-1.jpg";
-import bnktImage from "../assets/images/bnkt.png";
+// import bnktImage from "../assets/images/bnkt.png";
 
 export default function HomePage() {
   return (
@@ -48,7 +48,7 @@ export default function HomePage() {
           </p>
 
           <div>
-            <img src={bnktImage} alt="bnkt" className="h-full w-full object-cover" />
+            {/* <img src={bnktImage} alt="bnkt" className="h-full w-full object-cover" /> */}
           </div>
         </div>
       </section>

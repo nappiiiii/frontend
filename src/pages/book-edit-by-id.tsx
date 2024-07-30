@@ -26,8 +26,8 @@ export default function BookEditById() {
       author: "",
       year: 2024,
       detail: "",
-      story: "",
-      classification: "",
+      info: "",
+      category: "",
       is_published: false,
     },
 
@@ -36,8 +36,8 @@ export default function BookEditById() {
       author: isNotEmpty("กรุณาระบุชื่อผู้แต่ง"),
       year: isNotEmpty("กรุณาระบุปีที่พิมพ์หนังสือ"),
       detail: isNotEmpty("กรุณาระบุรายละเอียดหนังสือ"),
-      story: isNotEmpty("กรุณาระบุเรื่องย่อหนังสือ"),
-      classification: isNotEmpty("กรุณาระบุหมวดหมู่หนังสือ"),
+      info: isNotEmpty("กรุณาระบุเรื่องย่อหนังสือ"),
+      category: isNotEmpty("กรุณาระบุหมวดหมู่หนังสือ"),
     },
   });
 
@@ -90,7 +90,7 @@ export default function BookEditById() {
       await axios.delete(`/books/${bookId}`);
       notifications.show({
         title: "ลบหนังสือสำเร็จ",
-        message: "ลบหนังสือเล่มนี้ออกจากระบบเรียบร้อยแล้ว",
+        message: "ลบหนังสือเล่มนี้ออกจากระบบเรียบร้อย",
         color: "red",
       });
       navigate("/books");

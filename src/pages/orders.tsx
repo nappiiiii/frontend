@@ -8,7 +8,7 @@ import { IconAlertTriangleFilled} from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 
 export default function StaffPage() {
-  const { data: orders, error } = useSWR<Order[]>("/staffs");
+  const { data: orders, error } = useSWR<Order[]>("/orders");
 
   return (
     <>
@@ -19,8 +19,8 @@ export default function StaffPage() {
             backgroundImage: `url(${cafeBackgroundImage})`,
           }}
         >
-          <h1 className="text-5xl mb-2">รายการออเดอร์</h1>
-          <h2>รายการที่ออเดอร์มาทั้งหมด</h2>
+          <h1 className="text-5xl mb-2">ออเดอร์</h1>
+          <h2>รายการออเดอร์ทั้งหมด</h2>
         </section>
 
         <section className="container mx-auto py-8">
@@ -40,11 +40,11 @@ export default function StaffPage() {
               <div className="border border-solid border-neutral-200" key={order.id}>
                 <div className="p-4">
                   <h2 className="text-lg font-semibold line-clamp-2">{order.name}</h2>
-                    <p className="text-xs text-neutral-500">จำนวน {order.total} ชิ้น</p>
+                    <p className="text-xs text-neutral-500">จำนวน {order.amount} ชิ้น</p>
                   <p className="text-xs text-neutral-500">ราคาทั้งหมด {order.price} </p>
                 </div>
                 <div className="flex justify-end px-4 pb-2">
-                  <Button component={Link} to={`/staffs/${order.id}`} size="xs" variant="default">
+                  <Button component={Link} to={`/orders/${order.id}`} size="xs" variant="default">
                     ดูรายละเอียด
                   </Button>
                 </div>

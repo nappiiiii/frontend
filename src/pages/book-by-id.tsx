@@ -45,12 +45,12 @@ export default function BookByIdPage() {
 
                   <h3>เรื่องย่อ</h3>
                   <p className="indent-4">
-                    {book.story}
+                    {book.info}
                   </p>
 
                   <h3>หมวดหมู่</h3>
                   {<div className="flex flex-wrap gap-2">
-                    {book.classification.split(",").map((tag) => (
+                    {book.category.split(",").map((tag) => (
                       <Badge key={tag} color="teal">#{tag}</Badge>
                     ))}
                   </div>}

@@ -18,8 +18,8 @@ export default function BookCreatePage() {
       author: "",
       year: 2024,
       detail: "",
-      story: "",
-      classification: "",
+      info: "",
+      category: "",
       is_published: false,
     },
 
@@ -28,8 +28,8 @@ export default function BookCreatePage() {
       author: isNotEmpty("กรุณาระบุชื่อผู้แต่ง"),
       year: isNotEmpty("กรุณาระบุปีที่พิมพ์หนังสือ"),
       detail: isNotEmpty("กรุณาระบุรายละเอียดหนังสือ"),
-      story: isNotEmpty("กรุณาระบุเรื่องย่อหนังสือ"),
-      classification: isNotEmpty("กรุณาระบุหมวดหมู่หนังสือ"),
+      info: isNotEmpty("กรุณาระบุเรื่องย่อหนังสือ"),
+      category: isNotEmpty("กรุณาระบุหมวดหมู่หนังสือ"),
     },
   });
 
@@ -74,7 +74,7 @@ export default function BookCreatePage() {
     <>
       <Layout>
         <Container className="mt-8">
-          <h1 className="text-xl">เพิ่มหนังสือในระบบ</h1>
+          <h1 className="text-xl">เพิ่มหนังสือ</h1>
 
           <form onSubmit={bookCreateForm.onSubmit(handleSubmit)} className="space-y-8">
             <TextInput
@@ -107,13 +107,13 @@ export default function BookCreatePage() {
             <TextInput
               label="เรื่องย่อ"
               placeholder="เรื่องย่อ"
-              {...bookCreateForm.getInputProps("story")}
+              {...bookCreateForm.getInputProps("info")}
             />
             {/* TODO: เพิ่มหมวดหมู่(s) */}
             <TextInput
-              label="หมวดหมู่ (ขั้นด้วย , Ex. นิยาย,สารคดี)"
+              label="หมวดหมู่ (ขั้นด้วย ,)"
               placeholder="หมวดหมู่"
-              {...bookCreateForm.getInputProps("classification")}
+              {...bookCreateForm.getInputProps("category")}
             />
 
             <Checkbox

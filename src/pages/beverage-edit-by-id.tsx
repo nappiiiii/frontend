@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { Menu } from "../lib/models";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/layout";
-import { Alert, Button, Checkbox, Container, Divider, NumberInput, TextInput } from "@mantine/core";
+import { Alert, Button, Container, Divider, NumberInput, TextInput } from "@mantine/core";
 import Loading from "../components/loading";
 import { IconAlertTriangleFilled, IconTrash } from "@tabler/icons-react";
 import { isNotEmpty, useForm } from "@mantine/form";
@@ -11,13 +11,13 @@ import axios, { AxiosError } from "axios";
 import { notifications } from "@mantine/notifications";
 import { modals } from "@mantine/modals";
 
-export default function MenuEditById() {
+export default function BevEditById() {
   const { menuId } = useParams();
   const navigate = useNavigate();
 
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const { data: menu, isLoading, error } = useSWR<Menu>(`/menus/${menuId}`);
+  const { data: menu, isLoading, error } = useSWR<Menu>(`/beverages/${menuId}`);
   const [isSetInitialValues, setIsSetInitialValues] = useState(false);
 
   const menuEditForm = useForm({
@@ -25,28 +25,25 @@ export default function MenuEditById() {
       name: "",
       price: 0,
       detail: "",
-      ingredient: "",
-      is_published: false,
     },
 
     validate: {
       name: isNotEmpty("กรุณาระบุชื่อเมนู"),
       price: isNotEmpty("กรุณาระบุราคา"),
-      detail: isNotEmpty("กรุณาระบุรายละเอียดเมนู"),
-      ingredient: isNotEmpty("กรุณาระบุส่วนผสม"),
+      detail: isNotEmpty("กรุณาระบุส่วนผสม"),
     },
   });
 
   const handleSubmit = async (values: typeof menuEditForm.values) => {
     try {
       setIsProcessing(true);
-      await axios.patch(`/menus/${menuId}`, values);
+      await axios.patch(`/beverages/${menuId}`, values);
       notifications.show({
         title: "แก้ไขข้อมูลเมนูสำเร็จ",
         message: "ข้อมูลเมนูได้รับการแก้ไขเรียบร้อยแล้ว",
         color: "teal",
       });
-      navigate(`/menus/${menuId}`);
+      navigate(`/beverages/${menuId}`);
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error.response?.status === 404) {
@@ -83,13 +80,13 @@ export default function MenuEditById() {
   const handleDelete = async () => {
     try {
       setIsProcessing(true);
-      await axios.delete(`/menus/${menuId}`);
+      await axios.delete(`/beverages/${menuId}`);
       notifications.show({
         title: "ลบเมนูสำเร็จ",
         message: "ลบเมนูนี้ออกจากระบบเรียบร้อยแล้ว",
         color: "red",
       });
-      navigate("/menus");
+      navigate("/beverages");
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error.response?.status === 404) {
@@ -157,22 +154,10 @@ export default function MenuEditById() {
                   min={0}
                   {...menuEditForm.getInputProps("price")}
                 />
-
-                <TextInput
-                  label="รายละเอียดเมนู"
-                  placeholder="รายละเอียดเมนู"
-                  {...menuEditForm.getInputProps("detail")}
-                />
                 <TextInput
                   label="ส่วนผสม"
                   placeholder="ส่วนผสม"
-                  {...menuEditForm.getInputProps("ingredient")}
-                />
-                <Checkbox
-                  label="เผยแพร่"
-                  {...menuEditForm.getInputProps("is_published", {
-                    type: "checkbox",
-                  })}
+                  {...menuEditForm.getInputProps("detail")}
                 />
 
                 <Divider />

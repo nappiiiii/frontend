@@ -21,20 +21,20 @@ export default function OrderCreatePage() {
         initialValues:{
             name:"",
             price:0,
-            total:1,
-            note:"",
+            amount:1,
+            ps:"",
         },
         validate:{
             name:isNotEmpty("กรุณาระบุชื่อเมนู"),
             price:isNotEmpty("กรุณาระบุราคา"),
-            total:isNotEmpty("กรุณาระบุจำนวน"),
-            note:isNotEmpty("กรุณาระบุหมายเหตุ ไม่มีใส่ -"),
+            amount:isNotEmpty("กรุณาระบุจำนวน"),
+            ps:isNotEmpty("กรุณาระบุหมายเหตุ ไม่มีใส่ -"),
         },
     });
 
     const { menuId } = useParams();
 
-    const { data: menu, isLoading, error } = useSWR<Menu>(`/menus/${menuId}`);
+    const { data: menu, isLoading, error } = useSWR<Menu>(`/beverages/${menuId}`);
     const [isSetInitialValues, setIsSetInitialValues] = useState(false);
 
     const handleSubmit = async (values: typeof orderCreateForm.values) => {
@@ -42,9 +42,9 @@ export default function OrderCreatePage() {
           setIsProcessing(true);
           const ordernow = {
             name: values.name,
-            total: values.total,
-            price: values.price * values.total,
-            note: values.note,
+            amount: values.amount,
+            price: values.price * values.amount,
+            ps: values.ps,
             };
         
           await axios.post<Order>(`/orders`, ordernow);
@@ -53,7 +53,7 @@ export default function OrderCreatePage() {
             message: "อาหารได้เพิ่มในรายการเรียบร้อยแล้ว",
             color: "teal",
           });
-          navigate(`/menus`);
+          navigate(`/beverages`);
         } catch (error) {
           if (error instanceof AxiosError) {
             if (error.response?.status === 422) {
@@ -115,14 +115,9 @@ export default function OrderCreatePage() {
                     className="w-full object-cover aspect-[3/4]"
                     />
                     <div className="col-span-2 px-4 space-y-2 py-4">
-                        <h3>รายละเอียดเมนู</h3>
-                        <p className="indent-4">
-                            {menu.detail}
-                        </p>
-
                         <h3>ส่วนผสม</h3>
                         <p className="indent-4">
-                            {menu.ingredient}
+                            {menu.detail}
                         </p>
                         <form onSubmit={orderCreateForm.onSubmit(handleSubmit)} className="space-y-8">
                             <TextInput
@@ -137,7 +132,7 @@ export default function OrderCreatePage() {
                             label="จำนวน"
                             placeholder="จำนวน"
                             min={1}
-                            {...orderCreateForm.getInputProps("total")}
+                            {...orderCreateForm.getInputProps("amount")}
                             />
 
                             <NumberInput
@@ -151,11 +146,11 @@ export default function OrderCreatePage() {
                             <TextInput
                               label="หมายเหตุ"
                               placeholder="หมายเหตุ"
-                              {...orderCreateForm.getInputProps("note")}
+                              {...orderCreateForm.getInputProps("ps")}
                             />
                             <Divider />
                             <Button type="submit" loading={isProcessing}>
-                                สั่งอาหาร
+                                สั่งเครื่องดื่ม
                             </Button>
                         </form>
                     </div>

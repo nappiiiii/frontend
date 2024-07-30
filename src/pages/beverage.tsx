@@ -8,8 +8,8 @@ import { IconAlertTriangleFilled, IconPlus } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 
 
-export default function MenusPage() {
-  const { data: menus, error } = useSWR<Menu[]>("/menus");
+export default function BeveragePage() {
+  const { data: menus, error } = useSWR<Menu[]>("/beverages");
 
   return (
     <>
@@ -21,7 +21,7 @@ export default function MenusPage() {
           }}
         >
           <h1 className="text-5xl mb-2">เมนู</h1>
-          <h2>รายการเมนูทั้งหมด</h2>
+          <h2>เมนูทั้งหมด</h2>
         </section>
 
         <section className="container mx-auto py-8">
@@ -31,7 +31,7 @@ export default function MenusPage() {
             <Button
               component={Link}
               leftSection={<IconPlus />}
-              to="/menus/create"
+              to="/beverages/create"
               size="xs"
               variant="primary"
               className="flex items-center space-x-2"
@@ -66,13 +66,13 @@ export default function MenusPage() {
 
                 <div className="flex justify-center px-4 pb-2">
                   <div className="flex justify-end px-4 pb-2">
-                    <Button component={Link} to={`/orders/${menu.id}`} size="xs" variant="default">
-                      ซื้อ
+                    <Button component={Link} to={`/beverages/${menu.id}/orders`} size="xs" variant="default">
+                      สั่งเครื่องดื่ม
                     </Button>
                   </div>
 
                   <div className="flex justify-end px-4 pb-2">
-                    <Button component={Link} to={`/menus/${menu.id}`} size="xs" variant="default">
+                    <Button component={Link} to={`/beverages/${menu.id}`} size="xs" variant="default">
                       ดูรายละเอียด
                     </Button>
                   </div>
@@ -82,6 +82,6 @@ export default function MenusPage() {
           </div>
         </section>
       </Layout>
-    </>
+    </> 
   );
 }

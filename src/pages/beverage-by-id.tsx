@@ -6,16 +6,15 @@ import useSWR from "swr";
 import Loading from "../components/loading";
 import { IconAlertTriangleFilled, IconEdit } from "@tabler/icons-react";
 
-export default function MenuByIdPage() {
+export default function BevByIdPage() {
   const { menuId } = useParams();
 
-  const { data: menu, isLoading, error } = useSWR<Menu>(`/menus/${menuId}`);
+  const { data: menu, isLoading, error } = useSWR<Menu>(`/beverages/${menuId}`);
 
   return (
     <>
       <Layout>
         <Container className="mt-4">
-          {/* You can use isLoading instead of !menu */}
           {isLoading && !error && <Loading />}
           {error && (
             <Alert
@@ -38,16 +37,10 @@ export default function MenuByIdPage() {
                   className="w-full object-cover aspect-[3/4]"
                 />
                 <div className="col-span-2 px-4 space-y-2 py-4">
-                  <h3>รายละเอียดเมนู</h3>
+                  <h3>ส่วนผสม</h3>
                   <p className="indent-4">
                     {menu.detail}
                   </p>
-
-                  <h3>ส่วนผสม</h3>
-                  <p className="indent-4">
-                    {menu.ingredient}
-                  </p>
-
                 </div>
               </div>
 
@@ -57,7 +50,7 @@ export default function MenuByIdPage() {
                 color="blue"
                 size="xs"
                 component={Link}
-                to={`/menus/${menu.id}/edit`}
+                to={`/beverages/${menu.id}/edit`}
                 className="mt-4"
                 leftSection={<IconEdit />}
               >

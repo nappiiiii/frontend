@@ -4,8 +4,8 @@ export interface Book {
   author: string;
   year: number;
   detail: string;
-  story: string;
-  classification: string;
+  info: string;
+  category: string;
   is_published: boolean;
 }
 
@@ -14,14 +14,12 @@ export interface Menu {
   name: string;
   price: number;
   detail: string;
-  ingredient: string;
-  is_published: boolean;
 }
 
 export interface Order {
   id: number;
   name: string;
-  total: number;
+  amount: number;
   price: number;
-  note: string;
+  ps: string;
 }

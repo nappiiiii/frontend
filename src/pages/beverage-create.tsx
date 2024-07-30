@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/layout";
-import { Button, Checkbox, Container, Divider, NumberInput, TextInput } from "@mantine/core";
+import { Button, Container, Divider, NumberInput, TextInput } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { notifications } from "@mantine/notifications";
 import { Menu } from "../lib/models";
-export default function MenuCreatePage() {
+
+export default function BevCreatePage() {
   const navigate = useNavigate();
 
   const [isProcessing, setIsProcessing] = useState(false);
@@ -15,29 +16,26 @@ export default function MenuCreatePage() {
     initialValues: {
         name: "",
         price: 0,
-        detail: "",
-        ingredient: "",
-        is_published: false,
+        detail: ""
     },
 
     validate: {
-        name: isNotEmpty("กรุณาระบุชื่อเมนู"),
+        name: isNotEmpty("กรุณาระบุชื่อเครื่องดื่ม"),
         price: isNotEmpty("กรุณาระบุราคา"),
-        detail: isNotEmpty("กรุณาระบุรายละเอียดเมนู"),
-        ingredient: isNotEmpty("กรุณาระบุส่วนผสม"),
+        detail: isNotEmpty("กรุณาระบุส่วนผสม")
     },
   });
 
   const handleSubmit = async (values: typeof menuCreateForm.values) => {
     try {
       setIsProcessing(true);
-      const response = await axios.post<Menu>(`/menus`, values);
+      const response = await axios.post<Menu>(`/beverages`, values);
       notifications.show({
         title: "เพิ่มข้อมูลเมนูสำเร็จ",
         message: "ข้อมูลเมนูได้รับการเพิ่มเรียบร้อยแล้ว",
         color: "teal",
       });
-      navigate(`/menus/${response.data.id}`);
+      navigate(`/beverages/${response.data.id}`);
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error.response?.status === 422) {
@@ -69,7 +67,7 @@ export default function MenuCreatePage() {
     <>
       <Layout>
         <Container className="mt-8">
-          <h1 className="text-xl">เพิ่มเมนูในระบบ</h1>
+          <h1 className="text-xl">เพิ่มเครื่องดื่ม</h1>
 
           <form onSubmit={menuCreateForm.onSubmit(handleSubmit)} className="space-y-8">
             <TextInput
@@ -85,24 +83,10 @@ export default function MenuCreatePage() {
               {...menuCreateForm.getInputProps("price")}
             />
             <TextInput
-              label="รายละเอียดเมนู"
-              placeholder="รายละเอียดเมนู"
-              {...menuCreateForm.getInputProps("detail")}
-            />
-
-            <TextInput
               label="ส่วนผสม"
               placeholder="ส่วนผสม"
-              {...menuCreateForm.getInputProps("ingredient")}
+              {...menuCreateForm.getInputProps("detail")}
             />
-
-            <Checkbox
-              label="เผยแพร่"
-              {...menuCreateForm.getInputProps("is_published", {
-                type: "checkbox",
-              })}
-            />
-
             <Divider />
 
             <Button type="submit" loading={isProcessing}>

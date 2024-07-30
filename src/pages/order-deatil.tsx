@@ -13,19 +13,19 @@ import { notifications } from "@mantine/notifications";
 export default function OrderDetail() {
   const { orderId } = useParams();
 
-  const { data: order, isLoading, error } = useSWR<Order>(`/staffs/${orderId}`);
+  const { data: order, isLoading, error } = useSWR<Order>(`/orders/${orderId}`);
 
   const navigate = useNavigate();
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/staffs/${orderId}`);
+      await axios.delete(`/orders/${orderId}`);
       notifications.show({
         title: "ลบออเดอร์สำเร็จ",
         message: "ลบออเดอร์นี้ออกจากระบบเรียบร้อยแล้ว",
         color: "red",
       });
-      navigate("/staffs");
+      navigate("/orders");
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error.response?.status === 404) {
@@ -72,10 +72,10 @@ export default function OrderDetail() {
               <h1>{order.name}</h1>
               <p className="italic text-neutral-500 mb-4">ราคา {order.price} บาท</p>
               <div className="grid grid-cols-1 lg:grid-cols-3">
-                  <h3>จำนวน {order.total} ชิ้น</h3>
+                  <h3>จำนวน {order.amount} ชิ้น</h3>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-3">
-                  <h3>หมายเหตุ : {order.note}</h3>
+                  <h3>หมายเหตุ : {order.ps}</h3>
               </div>
               <Divider className="mt-4" />
               

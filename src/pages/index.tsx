@@ -1,24 +1,24 @@
 import Layout from "../components/layout";
-import cafeBackgroundImage from "../assets/images/bg-cafe-1.jpg";
+import cafeBackgroundImage from "../assets/images/books.jpg";
 import ajPanwitImage from "../assets/images/aj-panwit.jpg";
-import coffeeImage from "../assets/images/coffee-1.jpg";
-// import bnktImage from "../assets/images/bnkt.png";
+import coffeeImage from "../assets/images/coffee.jpg";
+import thisisme from "../assets/images/thisisme.jpg";
 
 export default function HomePage() {
   return (
     <Layout>
       <section
-        className="h-[500px] w-full text-white bg-orange-800 bg-cover bg-blend-multiply flex flex-col justify-center items-center px-4 text-center"
+        className="h-[500px] w-full text-white bg-pink-800 bg-cover bg-blend-multiply flex flex-col justify-center items-center px-4 text-center"
         style={{
           backgroundImage: `url(${cafeBackgroundImage})`,
         }}
       >
         <h1 className="text-5xl mb-2">ยินดีต้อนรับสู่ IoT Library & Cafe</h1>
-        <h2>ร้านกาแฟที่มีหนังสืออยู่นิดหน่อยให้คุณได้อ่าน</h2>
+        <h2>ร้านกาแฟที่มีหนังสืออยู่นิดหน่อยให้คุณได้อ่าน (แถมยาระบายอ่อน ๆ)</h2>
       </section>
 
       <section className="container mx-auto py-8">
-        <h1>เกี่ยวกับเรา</h1>
+        <h1>About us</h1>
 
         <div className="grid grid-cols-3 gap-4">
           <p className="text-left col-span-2">
@@ -35,20 +35,28 @@ export default function HomePage() {
       </section>
 
       <section className="container mx-auto py-8">
-        <h1>ปัจจุบันคาเฟ่ และห้องสมุดของเรา อยู่ในช่วงการดูแลของ</h1>
-        <h2>ผู้ดูแลร้านอันดับ 1 (อู้เก่ง)</h2>
+        <h1>พนักงานประจำสาขา</h1>
+        <h3>สาขา การลละคร (แกล้งป่วยเพื่ออู้งาน)</h3>
 
         <div className="grid grid-cols-3 gap-4">
-          <p className="text-left col-span-2">
-            นายคนนี้ชื่อ นายกิตติภณ ทัศนเปรมสิน รหัสนักศึกษา 65070021 นักศึกษาชั้นปีที่ 3 ได้เข้ารับการฝึกงานที่ IoT Library & Cafe นี้โดยได้รับการรับรองจาก 
-            ผศ.ดร. ปานวิทย์ ธุวะนุติ และนายกฤตณัฏฐ์ ศิริพรนพคุณ ให้เข้ามาเป็นผู้ดูแลร้านอันดับ 1 ของร้านนี้ โดยเขามีความสามารถในการดูแลร้านและห้องสมุดของเราอย่างมืออาชีพ
-            (การอู้) โดยทางร้านเรามีบริการอาหารและเครื่องดื่มที่อร่อย และมีหนังสือที่หลากหลายให้คุณได้อ่านและเรียนรู้เรื่องใหม่ๆ ซึ่งเครื่องดื่มต่างๆ ราคาค่อนข้างถูก(มั้ง) อาหารก็อร่อย(แหละ)
-            ระหว่างที่นายคนนี้ดูแลร้านนายคนนี้ได้ตั้งใจทำงาน(นอน) และดูแลลูกค้าเป็นอย่างดีเสมอมา(ด่าทั้งร้าน) และเป็นคนที่มีความสุภาพและเป็นกันเองกับลูกค้าทุกคน(แต่ก็ด่าทั้งร้าน)
-            สุดท้ายขอให้ระวังบุคคลดักล่าวไว้ด้วยนะครับ เนื่องจากผศ.ดร. ปานวิทย์ ธุวะนุติ และนายกฤตณัฏฐ์ ศิริพรนพคุณ ได้เตะตูดไล่ออกจากร้านไปแล้ว อิอิ
+          <p className="col-span-2 text-left">
+
+            This is me วัดบ่เข้า เหล้าบ่ขาด บาทบ่ใส่ เพราะว่า i wake up ไม่ทัน สวัสดีค่ะคุณลูกค้า อยากทราบชื่อจริงเล่น ๆ หรือ ชื่อเล่นจริง ๆ คะ
+            เรียนคุณลูกค้าที่เคารพ ดิฉัน สายลับรัสเซียเขต 11 รหัสประจำตัว 65070115 นภสร ศรีวิโรจน์ ภาษาไทยอาจจะพูดไม่ค่อยชัด แต่ภาษาคอมฯ ไม่ได้เลยค่ะ
+            เป็นสาวงามถิ่นซาฟารี ผู้มีความงามตามสรรพสัตว์ ผิวดำอีกา ตาคล้ำเหมือนเสือโคร่ง โพรงจมูกสิงโต โง่เหมือลา ปากเหมือนหมา นิสัยเหมือนลิง สิงอยู่ตามร้านกาแฟ
+            
+            <p>ร้านกาแฟร้านนี้ เป็นส่วหนึ่งของรายวิชา 06016422 Internet of Things (IOT) ที่รวบรวมเมนู Coffee &  Non-Coffee ไว้ที่เดียว (แหงล่ะสิ ใครมันจะแยก ทำเพื่อ)
+            และเป็นส่วนหนึ่งของการเรียนการสอนของ อาจารย์ผศ.ดร. ปานวิทย์ ธุวะนุติ และ ผู้ช่วยสอน นาย กฤตณัฏฐ์ ศิริพรนพคุณ ในรายวิชานี้ ที่ยั้งไม่เคยลองกาแฟร้านนี้เลย (เศร้า เจ้าของไม่ลงมาดูงาน)
+            แต่เชื่อว่าร้านนี้เป็นร้านที่ดีและมีคุณภาพ และเป็นร้านที่เหมาะสำหรับการเรียนรู้เรื่องใหม่ๆ ในรายวิชานี้ และเป็นร้านที่เหมาะสำหรับการทำงาน และเป็นร้านที่เหมาะสำหรับการพักผ่อน (นอนทุกครั้ง สารภาพเลย)</p>
+          </p>
+
+          <p className="col-span-2 text-left">
+
+
           </p>
 
           <div>
-            {/* <img src={bnktImage} alt="bnkt" className="h-full w-full object-cover" /> */}
+            <img src={thisisme} alt="me" className="h-full w-full object-cover" />
           </div>
         </div>
       </section>

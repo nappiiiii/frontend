@@ -11,12 +11,20 @@ import HomePage from "./pages";
 import { Notifications } from "@mantine/notifications";
 import BooksPage from "./pages/books";
 import BookByIdPage from "./pages/book-by-id";
-import BookEditById from "./pages/book-edit-by-id";
-import { ModalsProvider } from "@mantine/modals";
 import BookCreatePage from "./pages/book-create";
+import BookEditById from "./pages/book-edit-by-id";
+import BeveragePage from "./pages/beverage";
+import BevCreatePage from "./pages/beverage-create";
+import BevByIdPage from "./pages/beverage-by-id";
+import BevEditById from "./pages/beverage-edit-by-id";
+import { ModalsProvider } from "@mantine/modals";
+
+import OrderCreatePage from "./pages/beverage-orders";
+import StaffPage from "./pages/orders";
+import OrderDetail from "./pages/order-deatil";
 
 const theme = createTheme({
-  primaryColor: "orange",
+  primaryColor: "pink",
   fontFamily: '"Noto Sans Thai Looped", sans-serif',
 });
 
@@ -41,6 +49,35 @@ const router = createBrowserRouter([
     path: "/books/:bookId/edit",
     element: <BookEditById />,
   },
+  {
+    path: "/beverages",
+    element: <BeveragePage />,
+  },
+  {
+    path: "/beverages/create",
+    element: <BevCreatePage />,
+  },
+  {
+    path: "/beverages/:menuId",
+    element: <BevByIdPage />,
+  },
+  {
+    path: "/beverages/:menuId/edit",
+    element: <BevEditById />,
+  },
+  {
+    path: "/beverages/:menuId/orders",
+    element: <OrderCreatePage />,
+  },
+  {
+    path: "/orders",
+    element: <StaffPage />,
+  }, 
+  {
+    path: "/orders/:orderId",
+    element: <OrderDetail />,
+  }
+  
 ]);
 
 if (import.meta.env.VITE_API_URL) {

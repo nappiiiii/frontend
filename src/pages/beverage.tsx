@@ -1,5 +1,5 @@
 import Layout from "../components/layout";
-import cafeBackgroundImage from "../assets/images/bg-cafe-2.jpg";
+import coffeeImage from "../assets/images/coffee.jpg";
 import useSWR from "swr";
 import { Menu } from "../lib/models";
 import Loading from "../components/loading";
@@ -15,9 +15,9 @@ export default function BeveragePage() {
     <>
       <Layout>
         <section
-          className="h-[500px] w-full text-white bg-orange-800 bg-cover bg-blend-multiply flex flex-col justify-center items-center px-4 text-center"
+          className="h-[500px] w-full text-white bg-pink-800 bg-cover bg-blend-multiply flex flex-col justify-center items-center px-4 text-center"
           style={{
-            backgroundImage: `url(${cafeBackgroundImage})`,
+            backgroundImage: `url(${coffeeImage})`,
           }}
         >
           <h1 className="text-5xl mb-2">เมนู</h1>
